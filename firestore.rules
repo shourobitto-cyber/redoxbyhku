@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // The app writes to "histories" without a login, so this collection must be open.
+    match /histories/{doc} {
+      allow read, write: if true;
+    }
+  }
+}
